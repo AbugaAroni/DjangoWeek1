@@ -1,0 +1,10 @@
+View different photos
+Click on single photo to expand it and see details -
+  can lead to new page where photo details appear
+Search for different photo catagories
+Copy link of photos
+View photos based on location
+
+
+Image model must have certain requirements and methods
+Location and Category models too with their own tests and save,update and delete methods.
