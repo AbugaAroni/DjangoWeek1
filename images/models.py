@@ -23,15 +23,6 @@ class Editor(models.Model):
     class Meta:
         ordering = ['first_name']
 
-class Images(models.Model):
-#    _images = models.ImageField(upload_to = 'images/')
-    title = models.CharField(max_length =60)
-    description = models.TextField()
-    location = models.ManyToManyField(Locations)
-    Category = models.ManyToManyField(Categories)
-
-    def __str__(self):
-        return self.title
 
 class Locations(models.Model):
     location_name = models.CharField(max_length =30)
@@ -43,4 +34,14 @@ class Categories(models.Model):
     category_name = models.CharField(max_length =30)
 
     def __str__(self):
-        return self.category_name           
+        return self.category_name
+
+class Images(models.Model):
+    _images = models.ImageField(upload_to = 'images/')
+    title = models.CharField(max_length =60)
+    description = models.TextField()
+    location = models.ManyToManyField(Locations)
+    Category = models.ManyToManyField(Categories)
+
+    def __str__(self):
+        return self.title
