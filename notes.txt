@@ -17,6 +17,8 @@ Images models
 -Image location foreign key, (many to many)
 -Image category foreign key, (many to many)
 
+methods - save_image(), delete_image(), get_image_by_id(id), search_image(category), filter_by_location(location)
+
 location models
 -Location name,
 
