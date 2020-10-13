@@ -37,4 +37,10 @@ class Locations(models.Model):
     location_name = models.CharField(max_length =30)
 
     def __str__(self):
-        return self.location_name        
+        return self.location_name
+
+class Categories(models.Model):
+    category_name = models.CharField(max_length =30)
+
+    def __str__(self):
+        return self.category_name           
