@@ -46,10 +46,10 @@ class Categories(models.Model):
         self.delete()
 
     def update_cat(self):
-        categories.objects.filter(category_name = self.category_name).update(category_name ='rick')
+        Categories.objects.filter(category_name = self.category_name).update(category_name ='rick')
 
     def display_cat():
-        catagories = categories.objects.all()
+        catagories = Categories.objects.all()
         return catagories
 
 
@@ -63,8 +63,8 @@ class Images(models.Model):
     def __str__(self):
         return self.title
 
-     def save_image(self):
+    def save_image(self):
          self.save()
 
-     def delete_image(self):
+    def delete_image(self):
          self.delete()

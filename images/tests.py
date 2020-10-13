@@ -1,12 +1,12 @@
 from django.test import TestCase
-from .models import Editor,Location,Categories,Images
+from .models import Editor,Locations,Categories,Images
 
 # Create your tests here.
 class EditorTestClass(TestCase):
 
     # Set up method
     def setUp(self):
-        self.james= Editor(first_name = 'Abuga', last_name ='Aroni', email ='abugaaroni@gmail.com')
+        self.abuga= Editor(first_name = 'Abuga', last_name ='Aroni', email ='abugaaroni@gmail.com')
 
     # Testing  instance
     def test_instance(self):
@@ -80,13 +80,13 @@ class CategoriesTestClass(TestCase):
 
     # Testing update Method
     def test_update_method(self):
-        self.jamestag.save_tag()
-        editors = tags.objects.all()
-        self.assertTrue(len(editors) > 0)
+        self.abugacat.save_cat()
+        cats = Categories.objects.all()
+        self.assertTrue(len(cats) > 0)
 
-        self.jamestag.update_tag()
-        editors = tags.objects.filter(name='rick')
-        self.assertTrue(len(editors) > 0)
+        self.abugacat.update_cat()
+        catzz = Categories.objects.filter(category_name='rick')
+        self.assertTrue(len(catzz) > 0)
 
 
 
