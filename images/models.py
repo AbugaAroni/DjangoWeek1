@@ -24,12 +24,17 @@ class Editor(models.Model):
         ordering = ['first_name']
 
 class Images(models.Model):
-    #image
-    name = models.CharField(max_length =60)
+#    _images = models.ImageField(upload_to = 'images/')
+    title = models.CharField(max_length =60)
     description = models.TextField()
     location = models.ManyToManyField(Locations)
     Category = models.ManyToManyField(Categories)
 
     def __str__(self):
         return self.title
-        
+
+class Locations(models.Model):
+    location_name = models.CharField(max_length =30)
+
+    def __str__(self):
+        return self.location_name        
