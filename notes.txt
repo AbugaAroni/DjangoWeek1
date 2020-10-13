@@ -8,3 +8,17 @@ View photos based on location
 
 Image model must have certain requirements and methods
 Location and Category models too with their own tests and save,update and delete methods.
+
+
+Images models
+-Image,
+-Image name,
+-Image description,
+-Image location foreign key, (many to many)
+-Image category foreign key, (many to many)
+
+location models
+-Location name,
+
+Image Category
+-Category name,
