@@ -22,3 +22,14 @@ class Editor(models.Model):
 
     class Meta:
         ordering = ['first_name']
+
+class Images(models.Model):
+    #image
+    name = models.CharField(max_length =60)
+    description = models.TextField()
+    location = models.ManyToManyField(Locations)
+    Category = models.ManyToManyField(Categories)
+
+    def __str__(self):
+        return self.title
+        
