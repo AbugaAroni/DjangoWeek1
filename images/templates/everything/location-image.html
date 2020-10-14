@@ -6,7 +6,12 @@
 
    <div class="row">
 
+     <h2>  Found {{ imagez|length }} of location {{message}}</h2>
+
+     <hr>
+
      {% for imagez in imagez%}
+       <div class="row">
      <div class="col-md-6">
        <img src="{{imagez.i_images.url}}"  class="img-responsive" style="display: block; margin-left: auto; margin-right: auto; width: 100%;" alt="">
     </div>
@@ -27,6 +32,8 @@
         </div>
       </div>
     </div>
+    </div>
+    <hr>
       {% endfor%}
 
    </div>

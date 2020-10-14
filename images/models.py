@@ -77,6 +77,7 @@ class Blog_Images(models.Model):
         img = Blog_Images.objects.filter(Q(category__category_name=search_term))
         return img
 
-    def filter_by_location(imglocation):
-        catlocation = Images.objects.filter(location = imglocation)
+    @classmethod
+    def filter_by_location(cls,locationz):
+        catlocation = Blog_Images.objects.filter(Q(locations=locationz))
         return catlocation

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from .models import Locations,Categories,Blog_Images
+from django.db.models import Q
 
 # Create your views here.
 def welcome(request):
@@ -32,8 +33,8 @@ def singleimage(request,image_id):
 def singlelocation(request,locations):
     try:
         locationz =Locations.objects.get(id=locations)
-        images = []
-        imagez = Blog_Images.objects.get(locations=locationz)
+        imagez = Blog_Images.filter_by_location(locations)
+        message = f"{locationz.location_name}"
     except DoesNotExist:
         raise Http404()
-    return render(request,'everything/location-image.html', {"imagez":imagez})
+    return render(request,'everything/location-image.html', {"message":message, "imagez":imagez})
