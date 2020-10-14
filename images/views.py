@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from .models import Locations,Categories,Blog_Images
 
 # Create your views here.
@@ -21,3 +21,10 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'everything/search.html',{"message":message})
+
+def singleimage(request,image_id):
+    try:
+        imagez = Blog_Images.objects.get(id = image_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,'everything/single-picture.html', {"imagez":imagez})
