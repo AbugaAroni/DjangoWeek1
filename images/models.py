@@ -65,13 +65,12 @@ class Categories(models.Model):
         catagories = Categories.objects.all()
         return catagories
 
-
 class Images(models.Model):
-    _images = models.ImageField(upload_to = 'images/')
     title = models.CharField(max_length =60)
+    _images = models.ImageField(upload_to = 'images/')
     description = models.TextField()
-    location = models.ManyToManyField(Locations)
-    Category = models.ManyToManyField(Categories)
+    location = models.ForeignKey('Locations', on_delete=models.CASCADE,)
+    category = models.ManyToManyField(Categories)
 
     def __str__(self):
         return self.title
@@ -81,3 +80,6 @@ class Images(models.Model):
 
     def delete_image(self):
          self.delete()
+
+    def update_image(self):
+        Images.objects.filter(title = self.title).update(title ='rick')

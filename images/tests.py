@@ -132,5 +132,42 @@ class LocationsTestClass(TestCase):
             self.assertTrue(len(loczz) > 0)
 
 
+class ImagesTestClass(TestCase):
 
-#class ImagesTestClass(TestCase):
+        def setUp(self):
+            self.abugaloc= Locations(location_name = 'Mombasa')
+            self.abugaloc.save_location()
+            self.abugacat= Categories(category_name = 'Potrait')
+            self.abugacat.save_cat()
+
+            self.abugaimage= Images(title= 'Cool pic',_images='image',  description='Lorem ipsum dolor sit amet.', location= self.abugaloc)
+
+        # Testing  instance
+        def test_instance(self):
+            self.assertTrue(isinstance(self.abugaimage,Images))
+
+        # Testing Save Method
+        def test_save_method(self):
+            self.abugaimage.save_image()
+            imag = Images.objects.all()
+            self.assertTrue(len(imag) > 0)
+
+        # Testing Delete Method
+        def test_delete_method(self):
+            self.abugaimage.save_image()
+            imag = Images.objects.all()
+            self.assertTrue(len(imag) > 0)
+
+            self.abugaimage.delete_image()
+            imag1 = Images.objects.filter(title='Cool pic')
+            self.assertEqual(len(imag1), 0)
+
+        # Testing update Method
+        def test_update_method(self):
+            self.abugaimage.save_image()
+            imag = Images.objects.all()
+            self.assertTrue(len(imag) > 0)
+
+            self.abugaimage.update_image()
+            imagz = Images.objects.filter(title='rick')
+            self.assertTrue(len(imagz) > 0)
