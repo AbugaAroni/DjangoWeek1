@@ -6,31 +6,36 @@
 <div class="container">
 
   <!-- Looping through news   -->
-  {% for images_item in images %}
-
     <div class="row">
+    {% for images_item in images %}
       <!-- displaying title -->
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-12">
+      <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 10px; margin: 30px; border-bottom-style: double; height: 500px; ">
         <h2 class="text-center"> {{ images_item.title }}</h2>
+        <hr>
       <!--Display  images  -->
+      <div style="display: block; margin-left: auto; margin-right: auto; width: 100%; height: 50%">
+        <img src="{{images_item.i_images.url}}" class="img-responsive" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" alt="Image">
+      </div>
+        <p> <a href="singleimage/{{images_item.id}}">View details about this image</a>  </p>
 
-        <img src="{{images_item.i_images.url}}" class="img-responsive" alt="Image">
+        <div class = "row">
+          <div class = "col-md-6">
+              <p> <span style="font-weight: bold;"> Location </span>- {{ images_item.locations }}</p>
+              <p> <span style="font-weight: bold;"> Categories </span>-{% for c in images_item.category.all%} {{c.category_name}} | {% endfor %} </p>
+          </div>
+            <hr><hr>
+        </div>
+      </div>
 
-        <p> <a href="singleimage/{{images_item.id}}">View details</a>  </P>
-
-        <p>Location: {{ images_item.locations }}</p>
-        <p>Categories: {{ images_item.category}}</p>
+              {% empty %}
+              <div class="row">
+                <div class="col-md-6">
+                <h2 class="text-center">There are no images to view currently</h2>
+                </div>
+                <hr>
+              </div>
+        {% endfor %}
     </div>
-
-  {% empty %}
-  <div class="row">
-    <h2 class="text-center">There are no images to view currently</h2>
-  </div>
-  {% endfor %}
-
-
-
 </div>
-
 
 {% endblock %}
