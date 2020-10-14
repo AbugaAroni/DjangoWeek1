@@ -1,31 +1,6 @@
 from django.db import models
 
-# Create your models here.
-class Editor(models.Model):
-    first_name = models.CharField(max_length =30)
-    last_name = models.CharField(max_length =30)
-    email = models.EmailField()
-    phone_number = models.CharField(max_length = 10,blank =True)
-
-    def __str__(self):
-        return self.first_name
-
-    def save_editor(self):
-        self.save()
-
-    def delete_editor(self):
-        self.delete()
-
-    def display_editor():
-        editors = Editor.objects.all()
-        return editors
-
-    def update_editor(self):
-        Editor.objects.filter(first_name = self.first_name).update(first_name ='rick')
-
-    class Meta:
-        ordering = ['first_name']
-
+# Create your models here
 
 class Locations(models.Model):
     location_name = models.CharField(max_length =30)
@@ -67,7 +42,7 @@ class Categories(models.Model):
 
 class Images(models.Model):
     title = models.CharField(max_length =60)
-    _images = models.ImageField(upload_to = 'images/')
+    i_images = models.ImageField(upload_to = 'images/')
     description = models.TextField()
     location = models.ForeignKey('Locations', on_delete=models.CASCADE,)
     category = models.ManyToManyField(Categories)

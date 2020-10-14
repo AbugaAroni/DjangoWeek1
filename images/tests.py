@@ -1,50 +1,7 @@
 from django.test import TestCase
-from .models import Editor,Locations,Categories,Images
+from .models import Locations,Categories,Images
 
 # Create your tests here.
-class EditorTestClass(TestCase):
-
-    # Set up method
-    def setUp(self):
-        self.abuga= Editor(first_name = 'Abuga', last_name ='Aroni', email ='abugaaroni@gmail.com')
-
-    # Testing  instance
-    def test_instance(self):
-        self.assertTrue(isinstance(self.abuga,Editor))
-
-    # Testing Save Method
-    def test_save_method(self):
-        self.abuga.save_editor()
-        editors = Editor.objects.all()
-        self.assertTrue(len(editors) > 0)
-
-    # Testing Delete Method
-    def test_delete_method(self):
-        self.abuga.save_editor()
-        editors = Editor.objects.all()
-        self.assertTrue(len(editors) > 0)
-
-        self.abuga.delete_editor()
-        editors = Editor.objects.filter(first_name='Abuga')
-        self.assertEqual(len(editors), 0)
-
-    #Testing display method
-    def test_display_method(self):
-        self.abuga.save_editor()
-        goat = Editor.display_editor()
-        editors = Editor.objects.all()
-
-        self.assertTrue(len(editors), len(goat))
-
-    # Testing update Method
-    def test_update_method(self):
-        self.abuga.save_editor()
-        editors = Editor.objects.all()
-        self.assertTrue(len(editors) > 0)
-
-        self.abuga.update_editor()
-        editors = Editor.objects.filter(first_name='rick')
-        self.assertTrue(len(editors) > 0)
 
 class CategoriesTestClass(TestCase):
         # Set up method
@@ -140,7 +97,7 @@ class ImagesTestClass(TestCase):
             self.abugacat= Categories(category_name = 'Potrait')
             self.abugacat.save_cat()
 
-            self.abugaimage= Images(title= 'Cool pic',_images='image',  description='Lorem ipsum dolor sit amet.', location= self.abugaloc)
+            self.abugaimage= Images(title= 'Cool pic',i_images='image',  description='Lorem ipsum dolor sit amet.', location= self.abugaloc)
 
         # Testing  instance
         def test_instance(self):
