@@ -28,3 +28,12 @@ def singleimage(request,image_id):
     except DoesNotExist:
         raise Http404()
     return render(request,'everything/single-picture.html', {"imagez":imagez})
+
+def singlelocation(request,locations):
+    try:
+        locationz =Locations.objects.get(id=locations)
+        images = []
+        imagez = Blog_Images.objects.get(locations=locationz)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,'everything/location-image.html', {"imagez":imagez})

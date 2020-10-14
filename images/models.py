@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 
 # Create your models here
 
@@ -73,8 +74,9 @@ class Blog_Images(models.Model):
 
     @classmethod
     def search_by_title(cls,search_term):
-        img = cls.objects.filter(title__icontains=search_term)
+        img = Blog_Images.objects.filter(Q(category__category_name=search_term))
         return img
 
     def filter_by_location(imglocation):
         catlocation = Images.objects.filter(location = imglocation)
+        return catlocation

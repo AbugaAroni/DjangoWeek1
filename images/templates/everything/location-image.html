@@ -1,0 +1,35 @@
+{%extends 'everything/base.html'%}
+
+ {% block content %}
+
+ <div class="container">
+
+   <div class="row">
+
+     {% for imagez in imagez%}
+     <div class="col-md-6">
+       <img src="{{imagez.i_images.url}}"  class="img-responsive" style="display: block; margin-left: auto; margin-right: auto; width: 100%;" alt="">
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center">{{imagez.title}}</h1>
+          <hr>
+        </div>
+        <div class="col-md-12">
+          <p><span style="font-weight: bold;">Description:</span> <span style="font-style: italic">{{imagez.description}}</span></p>
+        </div>
+        <div class="col-md-12">
+          <p style="text-align: right;"><span style="font-weight: bold;">Location:</span> <span style="font-style: italic">{{imagez.locations}}</span></p>
+        </div>
+        <div class="col-md-12">
+          <p style="text-align: right;"><span style="font-weight: bold;">Categories:</span> <span style="font-style: italic">{%for g in imagez.category.all%}{{g.category_name}} | {%endfor%}</span></p>
+        </div>
+      </div>
+    </div>
+      {% endfor%}
+
+   </div>
+ </div>
+
+ {% endblock %}
