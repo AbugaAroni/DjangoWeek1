@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Locations,Categories,Images
+from .models import Locations,Categories,Blog_Images
 
 # Create your tests here.
 
@@ -97,52 +97,52 @@ class ImagesTestClass(TestCase):
             self.abugacat= Categories(category_name = 'Potrait')
             self.abugacat.save_cat()
 
-            self.abugaimage= Images(title= 'Cool pic',i_images='image',  description='Lorem ipsum dolor sit amet.', location= self.abugaloc)
+            self.abugaimage= Blog_Images(title= 'Cool pic',i_images='image',  description='Lorem ipsum dolor sit amet.', locations= self.abugaloc)
 
         # Testing  instance
         def test_instance(self):
-            self.assertTrue(isinstance(self.abugaimage,Images))
+            self.assertTrue(isinstance(self.abugaimage,Blog_Images))
 
         # Testing Save Method
         def test_save_method(self):
             self.abugaimage.save_image()
-            imag = Images.objects.all()
+            imag = Blog_Images.objects.all()
             self.assertTrue(len(imag) > 0)
 
         # Testing Delete Method
         def test_delete_method(self):
             self.abugaimage.save_image()
-            imag = Images.objects.all()
+            imag = Blog_Images.objects.all()
             self.assertTrue(len(imag) > 0)
 
             self.abugaimage.delete_image()
-            imag1 = Images.objects.filter(title='Cool pic')
+            imag1 = Blog_Images.objects.filter(title='Cool pic')
             self.assertEqual(len(imag1), 0)
 
         # Testing update Method
         def test_update_method(self):
             self.abugaimage.save_image()
-            imag = Images.objects.all()
+            imag = Blog_Images.objects.all()
             self.assertTrue(len(imag) > 0)
 
             self.abugaimage.update_image()
-            imagz = Images.objects.filter(title='rick')
+            imagz = Blog_Images.objects.filter(title='rick')
             self.assertTrue(len(imagz) > 0)
 
         # Testing get(id) Method
         def test_get_id_method(self):
             self.abugaimage.save_image()
-            imag = Images.objects.all()
+            imag = Blog_Images.objects.all()
             self.assertTrue(len(imag) > 0)
 
-            xyz = Images.get_image_by_id(self.abugaimage.id)
+            xyz = Blog_Images.get_image_by_id(self.abugaimage.id)
             self.assertTrue(len(xyz)> 0)
 
         # Testing get(loc) Method
         def test_filter_loc_method(self):
             self.abugaimage.save_image()
-            imag = Images.objects.all()
+            imag = Blog_Images.objects.all()
             self.assertTrue(len(imag) > 0)
 
-            xzy = Images.filter_by_location(self.abugaimage.location)
+            xzy = Blog_Images.filter_by_location(self.abugaimage.locations)
             self.assertTrue(len(xzy)> 0)

@@ -40,15 +40,18 @@ class Categories(models.Model):
         catagories = Categories.objects.all()
         return catagories
 
-class Images(models.Model):
+class Blog_Images(models.Model):
     title = models.CharField(max_length =60)
     i_images = models.ImageField(upload_to = 'images/')
     description = models.TextField()
-    location = models.ForeignKey('Locations', on_delete=models.CASCADE,)
+    locations = models.ForeignKey(Locations, on_delete=models.CASCADE,)
     category = models.ManyToManyField(Categories)
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        ordering = ['title']
 
     def save_image(self):
          self.save()
