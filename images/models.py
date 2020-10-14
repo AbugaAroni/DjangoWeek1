@@ -66,9 +66,15 @@ class Blog_Images(models.Model):
         idImages = Images.objects.filter(id = imgid)
         return idImages
 
-    def search_image(imgcategory):
+    @classmethod
+    def search_image(cls, imgcategory):
         catImages = Images.objects.filter(category = imgcategory)
         return catImages
+
+    @classmethod
+    def search_by_title(cls,search_term):
+        img = cls.objects.filter(title__icontains=search_term)
+        return img
 
     def filter_by_location(imglocation):
         catlocation = Images.objects.filter(location = imglocation)
