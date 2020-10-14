@@ -89,5 +89,48 @@ class CategoriesTestClass(TestCase):
         self.assertTrue(len(catzz) > 0)
 
 
+class LocationsTestClass(TestCase):
+
+        def setUp(self):
+            self.abugaloc= Locations(location_name = 'Mombasa')
+
+        # Testing  instance
+        def test_instance(self):
+            self.assertTrue(isinstance(self.abugaloc,Locations))
+
+        # Testing Save Method
+        def test_save_method(self):
+            self.abugaloc.save_location()
+            locs = Locations.objects.all()
+            self.assertTrue(len(locs) > 0)
+
+        # Testing Delete Method
+        def test_delete_method(self):
+            self.abugaloc.save_location()
+            locs = Locations.objects.all()
+            self.assertTrue(len(locs) > 0)
+
+            self.abugaloc.delete_location()
+            cats = Locations.objects.filter(location_name='Mombasa')
+            self.assertEqual(len(cats), 0)
+
+        #Testing display method
+        def test_display_method(self):
+            self.abugaloc.save_location()
+            goat = Locations.display_location()
+            catz = Locations.objects.all()
+            self.assertTrue(len(catz), len(goat))
+
+        # Testing update Method
+        def test_update_method(self):
+            self.abugaloc.save_location()
+            locs = Locations.objects.all()
+            self.assertTrue(len(locs) > 0)
+
+            self.abugaloc.update_location()
+            loczz = Locations.objects.filter(location_name='rick')
+            self.assertTrue(len(loczz) > 0)
+
+
 
 #class ImagesTestClass(TestCase):

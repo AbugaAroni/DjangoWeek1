@@ -33,6 +33,19 @@ class Locations(models.Model):
     def __str__(self):
         return self.location_name
 
+    def save_location(self):
+        self.save()
+
+    def delete_location(self):
+        self.delete()
+
+    def update_location(self):
+        Locations.objects.filter(location_name = self.location_name).update(location_name ='rick')
+
+    def display_location():
+        locs = Locations.objects.all()
+        return locs
+
 class Categories(models.Model):
     category_name = models.CharField(max_length =30)
 
