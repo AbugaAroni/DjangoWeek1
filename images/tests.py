@@ -171,3 +171,21 @@ class ImagesTestClass(TestCase):
             self.abugaimage.update_image()
             imagz = Images.objects.filter(title='rick')
             self.assertTrue(len(imagz) > 0)
+
+        # Testing get(id) Method
+        def test_get_id_method(self):
+            self.abugaimage.save_image()
+            imag = Images.objects.all()
+            self.assertTrue(len(imag) > 0)
+
+            xyz = Images.get_image_by_id(self.abugaimage.id)
+            self.assertTrue(len(xyz)> 0)
+
+        # Testing get(loc) Method
+        def test_filter_loc_method(self):
+            self.abugaimage.save_image()
+            imag = Images.objects.all()
+            self.assertTrue(len(imag) > 0)
+
+            xzy = Images.filter_by_location(self.abugaimage.location)
+            self.assertTrue(len(xzy)> 0)

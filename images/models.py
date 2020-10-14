@@ -83,3 +83,14 @@ class Images(models.Model):
 
     def update_image(self):
         Images.objects.filter(title = self.title).update(title ='rick')
+
+    def get_image_by_id(imgid):
+        idImages = Images.objects.filter(id = imgid)
+        return idImages
+
+    def search_image(imgcategory):
+        catImages = Images.objects.filter(category = imgcategory)
+        return catImages
+
+    def filter_by_location(imglocation):
+        catlocation = Images.objects.filter(location = imglocation)
