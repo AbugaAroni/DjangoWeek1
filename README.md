@@ -27,6 +27,9 @@ Python3.6
 Django3.1.2
 
 ### Setup Instructions
+To add images and such, log in as an admin.
+You can log in with user- abuga, password-password
+
 If you wish to view the project, you have to download the files. You will need python3.6,Django3.1.2 and all the other Dependencies in the requirements.txt folder  to run the files.
 You will also need to install flask and a virtual environment to effectively run the program.
 You will need to install the Dependencies from the requirements.txt file.
